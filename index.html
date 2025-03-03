@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Friend Cards</title>
+
+
+
+</head>
+<body>
+    <div class="outer-box">
+        <h2 class="heading">My Friend Gallery...</h2>
+       
+        <div class="container">
+            <div class="card-container" id="cardContainer"></div>
+        </div>
+        
+        <div>
+            <button class="btn1" onclick="addFriend()">Add Friend</button>&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="btn2" onclick="removeFriend()">Remove Last Friend</button>
+        </div>
+    </div>
+    <script>
+        let friends = ["Amruta", "Rani", "Tejuu", "Prisha", "Anvi", "Trisha"];
+        function renderCards() {
+            const container = document.getElementById("cardContainer");
+            container.innerHTML = "";
+            friends.forEach(friend => {
+                const card = document.createElement("div");
+                card.classList.add("card");
+                card.textContent = friend;
+                container.appendChild(card);
+            });
+        }
+        function addFriend() {
+            const newFriend = prompt("Enter Your Friend Name:");
+            if (newFriend) {
+                friends.push(newFriend);
+                renderCards();
+            }
+        }
+        function removeFriend() {
+            if (friends.length === 0) {
+                alert("There is No Friend Name in Array to Remove.");
+            } else {
+                friends.pop();
+                renderCards();
+            }
+        }
+        renderCards();
+    </script>
+</body>
+</html>
